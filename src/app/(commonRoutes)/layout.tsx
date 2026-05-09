@@ -1,0 +1,15 @@
+"use client";
+
+import { useAuth } from "@/providers/auth-provider";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+
+export default function CommonLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </>
+  );
+}
