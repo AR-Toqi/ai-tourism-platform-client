@@ -1,7 +1,9 @@
+import { RegisterForm } from "@/components/auth/register-form";
+
 export default function RegisterPage() {
   return (
-    <div className="flex flex-col items-center justify-center p-6">
-      <h1 className="text-2xl font-bold">Register</h1>
+    <div className="flex min-h-[80vh] items-center justify-center px-4 py-12">
+      <RegisterForm />
     </div>
   );
 }

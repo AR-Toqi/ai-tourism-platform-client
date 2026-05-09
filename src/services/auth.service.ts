@@ -17,7 +17,7 @@ export const authService = {
   resetPassword: async (data: any) => {
     return api.post<ApiResponse<null>>("/auth/reset-password", data);
   },
-  verifyEmail: async (token: string) => {
-    return api.post<ApiResponse<null>>("/auth/verify-email", { token });
+  verifyEmail: async (data: any) => {
+    return api.post<ApiResponse<null>>("/auth/verify-email", data);
   },
 };
