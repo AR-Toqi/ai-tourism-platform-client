@@ -6,7 +6,8 @@ export interface IReview {
   comment: string;
   userId: string;
   destinationId: string;
-  user: Pick<IUser, "id" | "name" | "profileImage">;
+  isHidden: boolean;
+  user: Pick<IUser, "id" | "name" | "image">;
   createdAt: string;
   updatedAt: string;
 }

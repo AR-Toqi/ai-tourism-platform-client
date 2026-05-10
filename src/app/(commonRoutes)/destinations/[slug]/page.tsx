@@ -1,7 +1,16 @@
-export default function DestinationDetailPage({ params }: { params: { slug: string } }) {
+import { DestinationDetailView } from "@/components/destinations/destination-detail-view";
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function DestinationDetailPage({ params }: Props) {
+  const { slug } = await params;
+
   return (
-    <div className="container py-10">
-      <h1 className="text-3xl font-bold">Destination: {params.slug}</h1>
+    <div className="min-h-screen bg-slate-50/50">
+      <DestinationDetailView slug={slug} />
     </div>
   );
 }
+

@@ -1,7 +1,10 @@
+import { DestinationListView } from "@/components/destinations/destination-list-view";
+
 export default function DestinationsPage() {
   return (
     <div className="container py-10">
-      <h1 className="text-3xl font-bold">Destinations</h1>
+      <DestinationListView />
     </div>
   );
 }
+

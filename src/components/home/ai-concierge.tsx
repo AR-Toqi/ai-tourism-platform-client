@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import Link from "next/link";
 
 export function AiConcierge() {
   return (
@@ -16,16 +18,18 @@ export function AiConcierge() {
             <p className="text-slate-400 text-body-lg max-w-md leading-relaxed">
               Stop spending hours on forums. Our neural network understands context, mood, and luxury better than any guidebook.
             </p>
-            <Button className="rounded-full bg-secondary-container hover:bg-secondary-container/90 text-on-secondary h-14 px-10 font-bold text-lg shadow-xl cursor-pointer">
-              Start Your Concierge Session
-            </Button>
+            <Link href="/ai-chat">
+              <Button className="rounded-full bg-secondary-container hover:bg-secondary-container/90 text-on-secondary h-14 px-10 font-bold text-lg shadow-xl cursor-pointer">
+                Start Your Concierge Session
+              </Button>
+            </Link>
           </div>
 
           <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 space-y-6 shadow-2xl">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary">L</div>
-              <div>
-                <div className="font-semibold text-white text-sm">Lumina AI</div>
+              <div><Image src="/images/wandr-logo.png" alt="Wandr AI" width={150} height={150} style={{ width: "auto", height: "auto" }} />
+
+                {/* <div className="font-semibold text-white text-sm">Wandr AI</div> */}
                 <div className="text-emerald-400 text-xs flex items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   Always Online

@@ -33,6 +33,11 @@ export function Navbar() {
             <Link href="/ai-chat" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">
               AI Assistant
             </Link>
+            {user && (
+              <Link href="/saved" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">
+                Saved
+              </Link>
+            )}
           </nav>
         </div>
         <div className="flex items-center gap-4">

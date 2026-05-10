@@ -7,6 +7,7 @@ import { Calendar, MapPin, DollarSign, Clock, Sparkles, ChevronRight, Info } fro
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { BookmarkButton } from "@/components/ui/bookmark-button";
 
 interface IItineraryDetail {
   id: string;
@@ -89,6 +90,10 @@ export function ItineraryView({ id }: { id: string }) {
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        {/* Bookmark Button */}
+        <div className="absolute top-6 right-6 z-20">
+          <BookmarkButton itemId={itinerary.id} type="itinerary" />
+        </div>
         <div className="absolute bottom-10 left-10 right-10">
           <div className="flex flex-wrap gap-3 mb-6">
             <Badge className="bg-white/20 backdrop-blur-md text-white border-none px-4 py-1.5 rounded-full hover:bg-white/30 transition-colors">

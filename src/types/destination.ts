@@ -22,12 +22,12 @@ export interface IDestination {
   description: string;
   coverImage?: string;
   category: DestinationCategory;
-  budget: number;
+  budgetMin: number;
+  budgetMax: number;
   location: string;
   country: string;
-  averageRating: number;
-
-  totalReviews: number;
+  avgRating: number;
+  reviewCount: number;
   isPublished: boolean;
   images: IDestinationImage[];
   createdAt: string;

@@ -1,5 +1,4 @@
 import { IDestination } from "./destination";
-import { IItinerary } from "./itinerary";
 
 export interface ISavedDestination {
   id: string;
@@ -13,6 +12,13 @@ export interface ISavedItinerary {
   id: string;
   userId: string;
   itineraryId: string;
-  itinerary: IItinerary;
+  itinerary: {
+    id: string;
+    title: string;
+    totalDays: number;
+    budgetEstimate: number;
+    travelStyle: string;
+    destination: IDestination;
+  };
   createdAt: string;
 }
