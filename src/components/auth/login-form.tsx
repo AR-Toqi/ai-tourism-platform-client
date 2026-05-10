@@ -10,6 +10,8 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import { useAuth } from "@/providers/auth-provider";
+
 
 const initialState = {
   success: false,
@@ -18,21 +20,34 @@ const initialState = {
 };
 
 export function LoginForm() {
+  const { refreshUser } = useAuth();
   const [state, formAction, isPending] = useActionState(loginAction, initialState);
   const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
 
+  const [hasHandled, setHasHandled] = useState(false);
+
   useEffect(() => {
-    if (state.message) {
+    if (state.message && !hasHandled) {
       if (state.success) {
+        setHasHandled(true);
         toast.success(state.message);
-        router.push("/");
+        refreshUser().then(() => {
+          router.push("/");
+        });
       } else if (!state.errors) {
         toast.error(state.message);
       }
     }
-  }, [state, router]);
+    
+    // Reset hasHandled when isPending starts (user clicks login again)
+    if (isPending && hasHandled) {
+      setHasHandled(false);
+    }
+  }, [state, router, refreshUser, hasHandled, isPending]);
+
+
 
   return (
     <Card className="w-full max-w-3xl shadow-ambient border-none rounded-[2.5rem] mx-auto overflow-hidden bg-white space-y-8">

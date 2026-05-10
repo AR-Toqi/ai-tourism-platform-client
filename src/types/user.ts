@@ -16,6 +16,8 @@ export interface IUser {
   role: UserRole;
   status: UserStatus;
   profileImage?: string;
+  image?: string;
+
   needsPasswordChange: boolean;
   isVerified: boolean;
   createdAt: string;

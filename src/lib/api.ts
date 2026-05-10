@@ -65,11 +65,12 @@ async function fetchWithAuth<T>(
 
   if (!res.ok) {
     throw new ApiError(
-      data?.message || "Something went wrong",
+      data?.error?.message || data?.message || "Something went wrong",
       res.status,
       data
     );
   }
+
 
   return data as T;
 }

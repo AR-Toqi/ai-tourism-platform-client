@@ -24,7 +24,9 @@ export interface IDestination {
   category: DestinationCategory;
   budget: number;
   location: string;
+  country: string;
   averageRating: number;
+
   totalReviews: number;
   isPublished: boolean;
   images: IDestinationImage[];
