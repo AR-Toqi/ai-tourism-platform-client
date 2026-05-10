@@ -20,4 +20,7 @@ export const adminService = {
   getAllItineraries: async () => {
     return api.get<PaginatedResponse<IItinerary>>("/admin/itineraries");
   },
+  getAllReviews: async () => {
+    return api.get<PaginatedResponse<any>>("/admin/reviews");
+  },
 };

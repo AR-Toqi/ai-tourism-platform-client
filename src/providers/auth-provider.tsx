@@ -8,7 +8,7 @@ import { api } from "@/lib/api";
 interface AuthContextType {
   user: IUser | null;
   isLoading: boolean;
-  refreshUser: () => Promise<void>;
+  refreshUser: () => Promise<IUser | null>;
   logout: () => void;
 }
 
@@ -24,8 +24,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setIsLoading(true);
       const response = await api.get<{ data: IUser }>("/users/me");
       setUser(response.data);
+      return response.data;
     } catch (error) {
       setUser(null);
+      return null;
     } finally {
       setIsLoading(false);
     }

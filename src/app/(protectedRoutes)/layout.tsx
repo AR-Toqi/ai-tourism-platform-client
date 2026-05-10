@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { usePathname } from "next/navigation";
 
 export default function ProtectedLayout({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -22,11 +24,13 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
 
   if (!user) return null;
 
+  const isAdminPath = pathname?.startsWith("/admin");
+
   return (
     <>
-      <Navbar />
+      {!isAdminPath && <Navbar />}
       <main className="flex-1">{children}</main>
-      <Footer />
+      {!isAdminPath && <Footer />}
     </>
   );
 }

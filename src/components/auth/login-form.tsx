@@ -33,8 +33,12 @@ export function LoginForm() {
       if (state.success) {
         setHasHandled(true);
         toast.success(state.message);
-        refreshUser().then(() => {
-          router.push("/");
+        refreshUser().then((userData) => {
+          if (userData?.role === "ADMIN") {
+            router.push("/admin");
+          } else {
+            router.push("/");
+          }
         });
       } else if (!state.errors) {
         toast.error(state.message);

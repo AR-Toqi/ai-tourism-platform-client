@@ -1,7 +1,5 @@
+import { AdminDashboardView } from "@/components/admin/admin-dashboard-view";
+
 export default function AdminDashboardPage() {
-  return (
-    <div className="container py-10">
-      <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-    </div>
-  );
+  return <AdminDashboardView />;
 }
