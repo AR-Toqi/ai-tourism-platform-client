@@ -26,11 +26,13 @@ export function AiConcierge() {
           </div>
 
           <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 space-y-6 shadow-2xl">
-            <div className="flex items-center gap-3">
-              <div><Image src="/images/wandr-logo.png" alt="Wandr AI" width={150} height={150} style={{ width: "auto", height: "auto" }} />
-
-                {/* <div className="font-semibold text-white text-sm">Wandr AI</div> */}
-                <div className="text-emerald-400 text-xs flex items-center gap-1">
+            <div className="flex items-center gap-2">
+              <div className="w-20 h-20 shrink-0 flex items-center justify-center">
+                <Image src="/images/bot-1.png" alt="Wandr AI" width={80} height={80} className="w-full h-auto object-contain drop-shadow-2xl" />
+              </div>
+              <div className="space-y-1">
+                <div className="font-bold text-white text-2xl tracking-tight">Wandr.ai</div>
+                <div className="text-emerald-400 text-sm flex items-center gap-2 font-medium">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   Always Online
                 </div>

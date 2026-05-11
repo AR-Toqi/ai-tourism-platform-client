@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/providers/auth-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -20,8 +21,19 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md">
       <div className="container flex h-20 items-center justify-between">
         <div className="flex items-center gap-10">
-          <Link href="/" className="font-display text-2xl font-bold tracking-tighter">
-            Wandr Travel
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="bg-gray-300 relative w-12 h-12 overflow-hidden rounded-full p-1">
+              <Image
+                src="/images/bot-1.png"
+                alt="Wandr Travels"
+                width={40}
+                height={40}
+                className="object-contain transition-transform group-hover:scale-110"
+              />
+            </div>
+            <span className="font-display text-2xl font-bold tracking-tighter text-slate-900">
+              Wandr Travels
+            </span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             <Link href="/destinations" className="text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">

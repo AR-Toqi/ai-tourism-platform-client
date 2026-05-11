@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,12 +7,23 @@ export function Footer() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-6">
-            <h3 className="font-display text-2xl font-bold">Lumina Travel</h3>
+            <div className="flex items-center gap-3">
+              <div className="relative w-12 h-12 overflow-hidden bg-white/10 rounded-xl p-1">
+                <Image
+                  src="/images/bot-1.png"
+                  alt="Wandr Travels"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <h3 className="font-display text-2xl font-bold">Wandr Travels</h3>
+            </div>
             <p className="text-sm text-slate-400 max-w-xs leading-relaxed">
               The world's first AI-native luxury travel ecosystem. Designed for the discerning explorer.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-semibold mb-6">Platform</h4>
             <ul className="space-y-4 text-sm text-slate-400">
@@ -42,9 +54,9 @@ export function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-20 pt-8 border-t border-white/10 text-center text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Lumina AI Tourism. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Wandr Travels. All rights reserved.</p>
         </div>
       </div>
     </footer>

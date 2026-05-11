@@ -65,39 +65,39 @@ export function Hero() {
   return (
     <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0">
-        <Image 
-          src="/images/Cinematic Amalfi Coast.png" 
-          alt="Hero Background" 
-          fill 
+        <Image
+          src="/images/Cinematic Amalfi Coast.png"
+          alt="Hero Background"
+          fill
           priority
-          className="object-cover" 
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-black/40 z-10" />
       </div>
 
       <div className="container relative z-20 text-center text-white space-y-8">
         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <h1 className="text-display-lg max-w-4xl mx-auto font-display font-bold tracking-tighter leading-tight">
-            Discover Your Next Adventure with <span className="text-primary italic">AI Precision</span>
+          <h1 className="text-display-lg max-w-3xl max-lg:text-5xl max-md:text-4xl max-sm:text-3xl mx-auto font-display font-bold tracking-tighter leading-tight">
+            Discover Your Next Adventure with <span className="text-white italic">AI Precision</span>
           </h1>
-          <p className="text-xl text-slate-200 max-w-2xl mx-auto font-medium">
+          <p className="text-xl text-white/80 text-slate-200 max-w-2xl mx-auto font-medium">
             Personalized itineraries curated by intelligence, designed for your soul.
           </p>
         </div>
-        
+
         <div className="max-w-3xl mx-auto space-y-6">
           <div className="flex items-center bg-white/95 backdrop-blur-lg p-2 rounded-full shadow-2xl transition-all hover:shadow-primary/20">
             <div className="flex-1 flex items-center px-6">
               <Search className="text-slate-400 mr-3 w-5 h-5" />
-              <Input 
-                className="border-none bg-transparent text-slate-900 focus-visible:ring-0 placeholder:text-slate-400 text-lg h-12" 
-                placeholder="Try '7 days in Paris on a budget'..." 
+              <Input
+                className="border-none bg-transparent text-slate-900 focus-visible:ring-0 placeholder:text-slate-400 text-lg h-12"
+                placeholder="Try '7 days in Paris on a budget'..."
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handlePlanWithAI()}
               />
             </div>
-            <Button 
+            <Button
               onClick={handlePlanWithAI}
               disabled={isParsing}
               className="rounded-full px-8 h-12 bg-primary hover:bg-primary/90 text-white font-bold transition-all flex gap-2 group"

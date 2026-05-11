@@ -46,7 +46,7 @@ export function LoginForm() {
         toast.error(state.message);
       }
     }
-    
+
     // Reset hasHandled when isPending starts (user clicks login again)
     if (isPending && hasHandled) {
       setHasHandled(false);
@@ -60,7 +60,7 @@ export function LoginForm() {
       <div className="w-full md:w-full p-4 md:p-8 pb-6">
         <CardHeader className="space-y-6 text-center pb-12 p-0 mb-8">
           <CardTitle className="text-display-md text-primary font-bold leading-tight">
-            Welcome Back to <br /> Lumina
+            Welcome Back to <br /> Wandr Travels
           </CardTitle>
           <CardDescription className="text-on-surface-variant text-body-md leading-relaxed max-w-xs mx-auto">
             Re-enter the world's first AI-native luxury travel ecosystem and continue your journey.

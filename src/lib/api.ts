@@ -1,4 +1,7 @@
-const BASE_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1` || "http://localhost:5000/api/v1";
+// Detect base URL for both client and server side
+const isServer = typeof window === "undefined";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+const BASE_URL = isServer ? `${APP_URL}/api/v1` : "/api/v1";
 
 interface FetchOptions extends RequestInit {
   params?: Record<string, string>;

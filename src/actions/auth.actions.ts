@@ -80,7 +80,7 @@ export async function loginAction(prevState: any, formData: FormData) {
     const response = await authService.login(validated.data);
 
     if (response.success && response.data) {
-      const { accessToken, refreshToken, token } = response.data as any;
+      const { accessToken, refreshToken } = response.data as any;
       const cookieStore = await cookies();
 
       const cookieOptions = {
@@ -93,7 +93,6 @@ export async function loginAction(prevState: any, formData: FormData) {
 
       if (accessToken) cookieStore.set("accessToken", accessToken, cookieOptions);
       if (refreshToken) cookieStore.set("refreshToken", refreshToken, cookieOptions);
-      if (token) cookieStore.set("better-auth.session_token", token, cookieOptions);
     }
 
     return {

@@ -88,70 +88,68 @@ export default function ProfileView() {
   if (!user) return null;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 space-y-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="max-w-7xl mx-auto px-4 py-16 space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Header Profile Section */}
-      <div className="relative">
-        {/* Cover Decoration */}
-        <div className="h-48 w-full bg-gradient-to-r from-primary/20 via-primary/10 to-transparent rounded-[2.5rem] mb-[-4rem] overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-        </div>
-
-        <div className="flex flex-col md:flex-row items-end gap-8 px-8">
+      <div className="bg-white rounded-[2.5rem] p-10 shadow-sm border border-slate-100">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
           <div className="relative group">
-            <Avatar className="w-40 h-40 border-[6px] border-white shadow-2xl rounded-[2rem]">
+            <Avatar className="w-44 h-44 border-8 border-slate-50 shadow-xl rounded-[2.5rem]">
               <AvatarImage src={user.profileImage || user.image || ""} alt={user.name} className="object-cover" />
-
-              <AvatarFallback className="bg-primary text-white text-5xl font-bold rounded-[2rem]">
+              <AvatarFallback className="bg-primary text-white text-5xl font-bold rounded-[2.5rem]">
                 {user.name.charAt(0)}
               </AvatarFallback>
             </Avatar>
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem] cursor-pointer">
-              <Camera className="text-white w-8 h-8" />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem] cursor-pointer">
+              <Camera className="text-white w-10 h-10" />
             </div>
           </div>
 
-          <div className="flex-1 pb-4">
-            <div className="flex flex-wrap items-center gap-3 mb-2">
-              <h1 className="text-4xl font-black tracking-tight text-slate-900">{user.name}</h1>
-              <Badge variant="secondary" className="bg-primary/10 text-primary border-none font-bold uppercase tracking-wider text-[10px] px-2.5 py-1">
-                {user.role}
-              </Badge>
-            </div>
-            <div className="flex flex-wrap items-center gap-6 text-slate-500 font-medium">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary" />
-                {user.email}
+          <div className="flex-1 text-center md:text-left space-y-4">
+            <div>
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
+                <h1 className="text-5xl font-black tracking-tight text-slate-900">{user.name}</h1>
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-none font-bold uppercase tracking-wider text-[10px] px-3 py-1.5 rounded-lg">
+                  {user.role}
+                </Badge>
               </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-primary" />
-                Joined {new Date(user.createdAt).toLocaleDateString()}
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-slate-500 font-medium">
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 bg-slate-50 rounded-lg">
+                    <Mail className="w-4 h-4 text-primary" />
+                  </div>
+                  {user.email}
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 bg-slate-50 rounded-lg">
+                    <Calendar className="w-4 h-4 text-primary" />
+                  </div>
+                  Joined {new Date(user.createdAt).toLocaleDateString()}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex gap-3 pb-4 relative z-10">
-            <Link href="/profile/edit">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
+              <Link href="/profile/edit">
+                <Button
+                  className="rounded-2xl px-8 h-14 font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <Edit className="w-5 h-5 mr-2" />
+                  Update Profile
+                </Button>
+              </Link>
+
               <Button
-                className="rounded-2xl px-6 h-12 font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                variant="outline"
+                onClick={() => {
+                  console.log("Logout clicked");
+                  handleLogout();
+                }}
+                className="rounded-2xl w-14 h-14 p-0 border-slate-200 hover:bg-red-50 hover:text-red-500 hover:border-red-100 transition-all flex items-center justify-center cursor-pointer shadow-sm"
               >
-                <Edit className="w-4 h-4 mr-2" />
-                Update Profile
+                <LogOut className="w-6 h-6" />
               </Button>
-            </Link>
-
-            <Button
-              variant="outline"
-              onClick={() => {
-                console.log("Logout clicked");
-                handleLogout();
-              }}
-              className="rounded-2xl w-12 h-12 p-0 border-slate-200 hover:bg-red-50 hover:text-red-500 hover:border-red-100 transition-all flex items-center justify-center cursor-pointer"
-            >
-              <LogOut className="w-5 h-5" />
-            </Button>
+            </div>
           </div>
-
-
         </div>
       </div>
 
