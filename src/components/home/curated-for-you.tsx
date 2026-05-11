@@ -37,21 +37,21 @@ export async function CuratedForYou() {
     .slice(0, 6);
 
   return (
-    <section className="section-gap bg-surface">
+    <section className="py-12 md:py-24 bg-surface">
       <div className="container">
-        <div className="flex justify-between items-end mb-10">
-          <div className="space-y-2">
-            <h2 className="text-headline-lg">Popular Destinations</h2>
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 px-4 md:px-0">
+          <div className="space-y-2 text-center sm:text-left">
+            <h2 className="text-3xl md:text-headline-lg font-bold">Popular Destinations</h2>
             <p className="text-on-surface-variant">Top-rated places to explore around the globe.</p>
           </div>
-          <Link href="/destinations">
+          <Link href="/destinations" className="self-center sm:self-auto">
             <Button variant="link" className="text-primary font-semibold group p-0">
               View all destinations <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-4 md:px-0">
           {destinations.length > 0 ? (
             destinations.map((dest) => (
               <Link key={dest.id} href={`/destinations/${dest.slug}`}>

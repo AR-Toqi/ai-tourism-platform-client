@@ -5,8 +5,8 @@ export function Footer() {
   return (
     <footer className="bg-[#0f172a] text-white py-20 border-t border-white/10">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center md:text-left">
+          <div className="space-y-6 flex flex-col items-center md:items-start">
             <div className="flex items-center gap-3">
               <div className="relative w-12 h-12 overflow-hidden bg-white/10 rounded-xl p-1">
                 <Image
@@ -14,12 +14,13 @@ export function Footer() {
                   alt="Wandr Travels"
                   width={40}
                   height={40}
+                  style={{ width: "auto", height: "auto" }}
                   className="object-contain"
                 />
               </div>
               <h3 className="font-display text-2xl font-bold">Wandr Travels</h3>
             </div>
-            <p className="text-sm text-slate-400 max-w-xs leading-relaxed">
+            <p className="text-sm text-slate-400 max-w-xs leading-relaxed mx-auto md:mx-0">
               The world's first AI-native luxury travel ecosystem. Designed for the discerning explorer.
             </p>
           </div>
@@ -44,7 +45,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-semibold mb-6">Connect</h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center md:justify-start">
               <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
                 <span className="text-xs">IG</span>
               </div>

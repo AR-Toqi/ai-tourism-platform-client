@@ -88,50 +88,47 @@ export default function ProfileView() {
   if (!user) return null;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-16 space-y-8 md:space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Header Profile Section */}
-      <div className="bg-white rounded-[2.5rem] p-10 shadow-sm border border-slate-100">
-        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
-          <div className="relative group">
-            <Avatar className="w-44 h-44 border-8 border-slate-50 shadow-xl rounded-[2.5rem]">
+      <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-10 shadow-sm border border-slate-100">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10">
+          <div className="relative group shrink-0">
+            <Avatar className="w-32 h-32 md:w-44 md:h-44 border-4 md:border-8 border-slate-50 shadow-xl rounded-3xl md:rounded-[2.5rem]">
               <AvatarImage src={user.profileImage || user.image || ""} alt={user.name} className="object-cover" />
-              <AvatarFallback className="bg-primary text-white text-5xl font-bold rounded-[2.5rem]">
+              <AvatarFallback className="bg-primary text-white text-3xl md:text-5xl font-bold rounded-3xl md:rounded-[2.5rem]">
                 {user.name.charAt(0)}
               </AvatarFallback>
             </Avatar>
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2.5rem] cursor-pointer">
-              <Camera className="text-white w-10 h-10" />
-            </div>
           </div>
 
-          <div className="flex-1 text-center md:text-left space-y-4">
-            <div>
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 mb-3">
-                <h1 className="text-5xl font-black tracking-tight text-slate-900">{user.name}</h1>
+          <div className="flex-1 text-center md:text-left space-y-4 w-full">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+                <h1 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900">{user.name}</h1>
                 <Badge variant="secondary" className="bg-primary/10 text-primary border-none font-bold uppercase tracking-wider text-[10px] px-3 py-1.5 rounded-lg">
                   {user.role}
                 </Badge>
               </div>
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-8 text-slate-500 font-medium">
+              <div className="flex flex-col md:flex-row flex-wrap items-center justify-center md:justify-start gap-3 md:gap-8 text-slate-500 font-medium">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-slate-50 rounded-lg">
+                  <div className="p-1.5 bg-slate-50 rounded-lg">
                     <Mail className="w-4 h-4 text-primary" />
                   </div>
-                  {user.email}
+                  <span className="text-sm md:text-base truncate max-w-[250px]">{user.email}</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 bg-slate-50 rounded-lg">
+                  <div className="p-1.5 bg-slate-50 rounded-lg">
                     <Calendar className="w-4 h-4 text-primary" />
                   </div>
-                  Joined {new Date(user.createdAt).toLocaleDateString()}
+                  <span className="text-sm md:text-base">Joined {new Date(user.createdAt).toLocaleDateString()}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-4">
-              <Link href="/profile/edit">
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 pt-4">
+              <Link href="/profile/edit" className="w-full sm:w-auto">
                 <Button
-                  className="rounded-2xl px-8 h-14 font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  className="w-full rounded-2xl px-8 h-12 md:h-14 font-bold shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <Edit className="w-5 h-5 mr-2" />
                   Update Profile
@@ -140,13 +137,11 @@ export default function ProfileView() {
 
               <Button
                 variant="outline"
-                onClick={() => {
-                  console.log("Logout clicked");
-                  handleLogout();
-                }}
-                className="rounded-2xl w-14 h-14 p-0 border-slate-200 hover:bg-red-50 hover:text-red-500 hover:border-red-100 transition-all flex items-center justify-center cursor-pointer shadow-sm"
+                onClick={() => handleLogout()}
+                className="w-full sm:w-14 h-12 md:h-14 rounded-2xl border-slate-200 hover:bg-red-50 hover:text-red-500 hover:border-red-100 transition-all flex items-center justify-center cursor-pointer shadow-sm"
               >
-                <LogOut className="w-6 h-6" />
+                <LogOut className="w-5 h-5 md:w-6 md:h-6 sm:mr-0 mr-2" />
+                <span className="sm:hidden font-bold">Log Out</span>
               </Button>
             </div>
           </div>
@@ -238,18 +233,18 @@ export default function ProfileView() {
               {itineraries.slice(0, 5).map((it) => (
                 <Link key={it.id} href={`/itineraries/${it.id}`}>
                   <Card className="border-none bg-white hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-300 rounded-[2rem] group cursor-pointer border-l-0 hover:border-l-8 border-primary overflow-hidden">
-                    <CardContent className="p-8">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-2">
-                          <div className="flex items-center gap-3">
-                            <h3 className="text-xl font-bold text-slate-800 group-hover:text-primary transition-colors">
+                    <CardContent className="p-6 md:p-8">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div className="space-y-3">
+                          <div className="flex flex-wrap items-center gap-3">
+                            <h3 className="text-lg md:text-xl font-bold text-slate-800 group-hover:text-primary transition-colors">
                               {it.title}
                             </h3>
-                            <Badge variant="outline" className="text-[10px] uppercase font-bold text-slate-400 border-slate-200">
+                            <Badge variant="outline" className="text-[10px] uppercase font-bold text-slate-400 border-slate-200 shrink-0">
                               {it.travelStyle}
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-6 text-sm text-slate-500 font-medium">
+                          <div className="flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm text-slate-500 font-medium">
                             <div className="flex items-center gap-2">
                               <MapPin className="w-4 h-4 text-primary/60" />
                               {it.destination.name}
@@ -264,7 +259,7 @@ export default function ProfileView() {
                             </div>
                           </div>
                         </div>
-                        <div className="bg-slate-50 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors">
+                        <div className="hidden sm:flex bg-slate-50 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors shrink-0">
                           <ChevronRight className="w-6 h-6 text-slate-400 group-hover:text-primary transition-all" />
                         </div>
                       </div>
