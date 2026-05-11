@@ -1,11 +1,9 @@
 export enum DestinationCategory {
-  BEACH = "BEACH",
-  MOUNTAIN = "MOUNTAIN",
-  CITY = "CITY",
-  HISTORICAL = "HISTORICAL",
-  ADVENTURE = "ADVENTURE",
-  CULTURAL = "CULTURAL",
-  NATURE = "NATURE",
+  BEACH = "beach",
+  MOUNTAIN = "mountain",
+  CITY = "city",
+  ADVENTURE = "adventure",
+  CULTURAL = "cultural",
 }
 
 export interface IDestinationImage {

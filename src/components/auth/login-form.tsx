@@ -36,6 +36,8 @@ export function LoginForm() {
         refreshUser().then((userData) => {
           if (userData?.role === "ADMIN") {
             router.push("/admin");
+          } else if (userData?.role === "CONTENT_MANAGER") {
+            router.push("/content-manager/destinations");
           } else {
             router.push("/");
           }

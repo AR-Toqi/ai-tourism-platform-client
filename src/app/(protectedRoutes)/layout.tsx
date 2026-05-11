@@ -24,13 +24,13 @@ export default function ProtectedLayout({ children }: { children: React.ReactNod
 
   if (!user) return null;
 
-  const isAdminPath = pathname?.startsWith("/admin");
+  const isDashboardPath = pathname?.startsWith("/admin") || pathname?.startsWith("/content-manager");
 
   return (
     <>
-      {!isAdminPath && <Navbar />}
+      {!isDashboardPath && <Navbar />}
       <main className="flex-1">{children}</main>
-      {!isAdminPath && <Footer />}
+      {!isDashboardPath && <Footer />}
     </>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { resetPasswordAction } from "@/actions/auth.actions";
+import { resetPasswordAction, AuthState } from "@/actions/auth.actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,15 +11,15 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 
-const initialState = {
+const initialState: AuthState = {
   success: false,
   message: "",
-  errors: {} as Record<string, string[]>,
+  errors: {},
 };
 
 export function ResetPasswordForm() {
   const searchParams = useSearchParams();
-  const token = searchParams.get("token") || "";
+  const email = searchParams.get("email") || "";
   const [state, formAction, isPending] = useActionState(resetPasswordAction, initialState);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -40,16 +40,44 @@ export function ResetPasswordForm() {
       <div className="w-full p-4 md:p-8 pb-6">
         <CardHeader className="space-y-6 text-center pb-12 p-0 mb-8">
           <CardTitle className="text-display-md text-primary font-bold leading-tight">
-            Secure Your <br /> Account
+            Reset Your <br /> Password
           </CardTitle>
           <CardDescription className="text-on-surface-variant text-body-md leading-relaxed max-w-xs mx-auto">
-            Choose a strong new password to regain access to your Lumina Collective profile.
+            Enter the OTP sent to your email and choose a strong new password.
           </CardDescription>
         </CardHeader>
         
         <form action={formAction} className="space-y-8 p-0">
-          <input type="hidden" name="token" value={token} />
           <CardContent className="space-y-8 p-0">
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-sm font-bold text-primary ml-1">Email Address</Label>
+              <Input 
+                id="email" 
+                name="email" 
+                type="email" 
+                defaultValue={email}
+                placeholder="evelyn@lumina.travel" 
+                required 
+                readOnly={!!email}
+                className={`h-16 rounded-[1.25rem] border-none bg-surface-container-low px-8 text-body-md placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-primary/10 transition-all ${state.errors?.email ? 'ring-2 ring-red-500' : ''}`}
+              />
+              {state.errors?.email && <p className="text-xs text-red-500 ml-1">{state.errors.email[0]}</p>}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="otp" className="text-sm font-bold text-primary ml-1">OTP (6 Digits)</Label>
+              <Input 
+                id="otp" 
+                name="otp" 
+                type="text" 
+                placeholder="123456" 
+                required 
+                maxLength={6}
+                className={`h-16 rounded-[1.25rem] border-none bg-surface-container-low px-8 text-body-md placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-primary/10 transition-all ${state.errors?.otp ? 'ring-2 ring-red-500' : ''}`}
+              />
+              {state.errors?.otp && <p className="text-xs text-red-500 ml-1">{state.errors.otp[0]}</p>}
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="password" className="text-sm font-bold text-primary ml-1">New Password</Label>
               <div className="relative">

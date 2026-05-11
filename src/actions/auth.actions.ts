@@ -118,7 +118,7 @@ export async function logoutAction() {
   redirect("/login");
 }
 
-export async function forgotPasswordAction(prevState: any, formData: FormData) {
+export async function forgotPasswordAction(prevState: AuthState, formData: FormData): Promise<AuthState> {
   const rawData = Object.fromEntries(formData.entries());
   const validated = forgotPasswordSchema.safeParse(rawData);
 
@@ -134,16 +134,16 @@ export async function forgotPasswordAction(prevState: any, formData: FormData) {
   try {
     const response = await authService.forgotPassword(validated.data.email);
     if (response.success) {
-      return { success: true, message: "Password reset link sent to your email." };
+      return { success: true, message: "OTP sent to your email.", redirectTo: `/reset-password?email=${validated.data.email}` };
     } else {
-      return { success: false, message: response.message || "Failed to send reset link." };
+      return { success: false, message: response.message || "Failed to send OTP." };
     }
   } catch (error: any) {
     return { success: false, message: error.message || "Something went wrong." };
   }
 }
 
-export async function resetPasswordAction(prevState: any, formData: FormData) {
+export async function resetPasswordAction(prevState: AuthState, formData: FormData): Promise<AuthState> {
   const rawData = Object.fromEntries(formData.entries());
   const validated = resetPasswordSchema.safeParse(rawData);
 

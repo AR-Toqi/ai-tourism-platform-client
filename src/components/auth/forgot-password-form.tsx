@@ -1,32 +1,38 @@
 "use client";
 
 import { useActionState, useEffect } from "react";
-import { forgotPasswordAction } from "@/actions/auth.actions";
+import { forgotPasswordAction, AuthState } from "@/actions/auth.actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-const initialState = {
+const initialState: AuthState = {
   success: false,
   message: "",
-  errors: {} as Record<string, string[]>,
+  errors: {},
+  redirectTo: "",
 };
 
 export function ForgotPasswordForm() {
   const [state, formAction, isPending] = useActionState(forgotPasswordAction, initialState);
+  const router = useRouter();
 
   useEffect(() => {
     if (state.message) {
       if (state.success) {
         toast.success(state.message);
+        if (state.redirectTo) {
+          router.push(state.redirectTo);
+        }
       } else if (!state.errors) {
         toast.error(state.message);
       }
     }
-  }, [state]);
+  }, [state, router]);
 
   return (
     <Card className="w-full max-w-3xl shadow-ambient border-none rounded-[2.5rem] mx-auto overflow-hidden bg-white space-y-8">
@@ -36,7 +42,7 @@ export function ForgotPasswordForm() {
             Forgot Your <br /> Password?
           </CardTitle>
           <CardDescription className="text-on-surface-variant text-body-md leading-relaxed max-w-xs mx-auto">
-            Enter your email address and we'll send you a link to reset your password and restore your access.
+            Enter your email address and we'll send you an OTP to reset your password.
           </CardDescription>
         </CardHeader>
         
@@ -61,7 +67,7 @@ export function ForgotPasswordForm() {
             className="w-full rounded-[1.25rem] h-16 bg-[#131b2e] hover:bg-[#1e293b] text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all cursor-pointer" 
             disabled={isPending}
           >
-            {isPending ? "Sending Link..." : "Send Reset Link"}
+            {isPending ? "Sending OTP..." : "Send OTP"}
           </Button>
         </form>
       </div>
