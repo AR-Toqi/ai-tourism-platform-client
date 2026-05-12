@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wanderlust AI — Intelligent Tourism & Experience Platform
 
-## Getting Started
+Wanderlust AI is a cutting-edge, AI-powered travel intelligence platform designed to transform how travelers discover, plan, and experience the world. Unlike traditional listing sites, Wanderlust AI understands user intent, preferences, and budget to build fully personalized, day-by-day itineraries and provide real-time travel assistance.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Core Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🌍 Smart Destination Discovery
+- **AI-Driven Search**: Natural language search to find destinations that match your mood, budget, and style.
+- **Dynamic Filtering**: Advanced filters for categories (Beach, Mountain, Cultural, etc.), budget ranges, and ratings.
+- **Rich Media**: High-quality galleries with lightbox support for an immersive visual experience.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🤖 AI Itinerary Generator
+- **Personalized Planning**: Generates complete day-by-day travel plans based on duration, budget, and traveler count.
+- **Structured Outputs**: Every plan includes specific activities, timing, location hints, and budget breakdowns.
+- **Persistence**: Save generated itineraries to your profile to access them anytime.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💬 AI Travel Assistant (Concierge)
+- **Context-Aware Chat**: A multi-turn conversational AI that remembers your previous questions and preferences.
+- **Real-time Advice**: Get instant help with packing lists, visa requirements, local etiquette, and hidden gems.
+- **Streaming UI**: Fast, token-by-token responses for a fluid, human-like interaction.
 
-## Learn More
+### 👥 Multi-Role Ecosystem
+- **Traveler Dashboard**: Manage saved destinations, generated itineraries, chat history, and personal profile.
+- **Content Manager Dashboard**: Full suite for managing destination listings, uploading galleries, and using AI to improve SEO and descriptions.
+- **Admin Command Center**: Global oversight of users, platform analytics, AI usage monitoring, and review moderation.
 
-To learn more about Next.js, take a look at the following resources:
+### 🔐 Secure Foundation
+- **Role-Based Access Control (RBAC)**: Fine-grained permissions for Travelers, Content Managers, and Admins.
+- **Robust Auth**: Secure session-based authentication using HTTP-only cookies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+### Frontend
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Components**: [ShadCN UI](https://ui.shadcn.com/) & [Framer Motion](https://www.framer.com/motion/)
+- **Data Fetching**: [TanStack Query v5](https://tanstack.com/query/latest)
+- **Forms**: [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Backend
+- **Runtime**: [Node.js](https://nodejs.org/) with [Express.js](https://expressjs.com/)
+- **Language**: TypeScript
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **AI Integration**: [OpenAI GPT-4o](https://openai.com/) & [Google Gemini Pro](https://deepmind.google/technologies/gemini/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🏗️ Architectural Challenges
+
+Building a platform that feels "alive" and intelligent presented several technical hurdles:
+
+### 1. Architecting the AI Logic
+The biggest challenge was moving beyond "simple prompts." We implemented a **Context-Aware Memory System** for the chat assistant, ensuring it doesn't just answer one-off questions but understands the trajectory of a traveler's planning process.
+
+### 2. Reliable Structured Data
+LLMs can be unpredictable. We architected a robust validation layer using **Zod and JSON Schemas** to ensure the AI's itinerary outputs always match our frontend's day-by-day UI components without crashing or showing malformed data.
+
+### 3. User-Friendly Complexity
+To keep the UI clean while providing deep functionality, we used an **Atomic Component Design**. Complex business logic (like budget calculations and role-based redirects) is abstracted into custom React Hooks and Middleware, keeping the presentation layer lightweight and fast.
+
+### 4. Performance & Streaming
+Waiting for an AI to think can be frustrating. We implemented **Streaming Responses (Server-Sent Events)** so users see results immediately, significantly improving perceived performance and the overall user experience.
+
+---
+
+## 🔮 Future Roadmap
+
+We are continuously evolving. Our upcoming features include:
+
+- **💳 Integrated Booking & Payments**: Direct hotel and activity bookings powered by Stripe.
+- **🗺️ Interactive Map Integration**: Google Maps API for real-time navigation and destination pins.
+- **🎙️ AI Voice Assistant**: Hands-free travel planning via Web Speech API.
+- **🌐 Global Reach**: Multi-language support (i18n) and localized content for international travelers.
+- **👥 Collaborative Planning**: Real-time "Trip Rooms" where friends can plan itineraries together.
+- **📱 Mobile Experience**: Dedicated iOS and Android apps built with React Native.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 20+
+- PostgreSQL
+- OpenAI / Gemini API Keys
+
+### Installation
+1. Clone the repository
+2. Install dependencies: `pnpm install`
+3. Set up environment variables (see `.env.example`)
+4. Run migrations: `npx prisma migrate dev`
+5. Start development servers:
+   - Server: `cd server && pnpm dev`
+   - Client: `cd client && pnpm dev`
+
+---
+
+## 👤 Developer
+
+**Abdullah Ragib Toqi**
+Full-Stack Developer & AI Enthusiast
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abdullah-ragib-toqi/)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/ar_toqi)
+
+---
+
+*Designed for the discerning explorer. Built with AI precision.*

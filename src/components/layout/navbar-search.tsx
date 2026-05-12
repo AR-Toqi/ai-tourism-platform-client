@@ -89,6 +89,7 @@ export function NavbarSearch() {
                         src={dest.coverImage || "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop"}
                         alt={dest.name}
                         fill
+                        sizes="56px"
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
