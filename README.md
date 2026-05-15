@@ -1,6 +1,6 @@
-# Wandr AI — Intelligent Tourism & Experience Platform
+# Wandr Travels — Intelligent Travel & Experience Platform
 
-Wandr AI is a cutting-edge, AI-powered travel intelligence platform designed to transform how travelers discover, plan, and experience the world. Unlike traditional listing sites, Wandr AI understands user intent, preferences, and budget to build fully personalized, day-by-day itineraries and provide real-time travel assistance.
+Wandr Travels is a cutting-edge, AI-powered travel intelligence platform designed to transform how travelers discover, plan, and experience the world. Unlike traditional listing sites, Wandr Travels understands user intent, preferences, and budget to build fully personalized, day-by-day itineraries and provide real-time travel assistance.
 
 ---
 
